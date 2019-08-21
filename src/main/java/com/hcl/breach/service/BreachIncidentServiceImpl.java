@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.breach.dto.BreachIncidentResponseDto;
 import com.hcl.breach.entity.Breach;
-import com.hcl.breach.exception.BreachIncidentException;
 import com.hcl.breach.exception.BreachRiskTypeException;
 import com.hcl.breach.repository.BreachRepository;
 
@@ -26,30 +25,41 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 
 	@Autowired
 	BreachRepository breachRepository;
-	
+
 	/**
 	 * 
 	 * This method is intended to list breaches based on role
-	 * @param role is the input request which 
-	 * includes franchise, businessArea, businessCategory, description, id
-	 * @return it returns  BreachResponseDto object with message and login id 
+	 * 
+	 * @param role is the input request
+	 * @return it returns BreachIncidentResponseDto list with roleId
+	 * 
 	 */
-	
+
 	@Override
 	public List<BreachIncidentResponseDto> getAllBreachIncidents(String role) {
 		LOGGER.info("breach incident service");
 		List<BreachIncidentResponseDto> breachList = new ArrayList<>();
-		List<Breach> allBreaches = breachRepository.findAll();
-		if (allBreaches.isEmpty()) {
-			throw new BreachIncidentException();
+
+		if (role.equals("A")) {
+			List<Breach> closedBreaches = breachRepository.findByRoleIdAndStatus(2, "C");
+			closedBreaches.stream().forEach(p -> {
+				BreachIncidentResponseDto response = new BreachIncidentResponseDto();
+				BeanUtils.copyProperties(p, response);
+				breachList.add(response);
+			});
+
 		} else {
+			List<Breach> allBreaches = breachRepository.findByStatus("P");
 			allBreaches.stream().forEach(b -> {
 				String riskType = b.getRiskType();
+
 				if (role.equalsIgnoreCase(riskType)) {
 					BreachIncidentResponseDto response = new BreachIncidentResponseDto();
 					BeanUtils.copyProperties(b, response);
 					breachList.add(response);
-				} else {
+				}
+
+				else {
 					throw new BreachRiskTypeException(role);
 				}
 			});
