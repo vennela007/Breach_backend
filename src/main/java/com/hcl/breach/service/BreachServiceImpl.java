@@ -1,6 +1,4 @@
 package com.hcl.breach.service;
-
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +16,7 @@ import com.hcl.breach.entity.Breach;
 import com.hcl.breach.entity.BusinessCategory;
 import com.hcl.breach.entity.RiskProfile;
 import com.hcl.breach.entity.RiskType;
+import com.hcl.breach.exception.CategoryNotFoundException;
 import com.hcl.breach.repository.BreachRepository;
 import com.hcl.breach.repository.BusinessCategoryRepository;
 import com.hcl.breach.repository.RiskProfileRepository;
@@ -62,25 +61,28 @@ public class BreachServiceImpl implements BreachService {
 			breach.setRiskType(RiskType.L.toString());
 		else
 			breach.setRiskType(riskProfile.get().getRisk());
-
 		breachRepository.save(breach);
-		
-
 		return new BreachResponseDto("Breach created successfully", breachRequestDto.getId());
-
 	}
+	/**
+	 * 
+	 * This method is intended to get all the business categories list 
+	 * and the expected output form will BusinessCategoryResponseDto
+	  */
 	@Override
 	public List<BusinessCategoryResponseDto> getAllCategories() {
-		
+		LOGGER.info("inside the getAllCategories method");
 		List<BusinessCategoryResponseDto> responseList = new ArrayList<>();
 		List<BusinessCategory> categoryList = businessCategoryRepository.findAll();
-		
+		if(categoryList.isEmpty()) {
+			
+			throw new CategoryNotFoundException("categories not found");
+		}else
 		categoryList.stream().forEach(c ->{
 			BusinessCategoryResponseDto response = new BusinessCategoryResponseDto();
 			BeanUtils.copyProperties(c,response);
 			responseList.add(response);
 		});
 		return responseList;
-
 }
 }

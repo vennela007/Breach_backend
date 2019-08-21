@@ -12,8 +12,6 @@ public interface BreachRepository extends JpaRepository<Breach, Integer> {
 	
 	List<Breach> findByRoleIdAndStatus(Integer roleId,String status);
 	List<Breach> findByStatus(String status);
-
-
 	public List<Breach> findByRoleId(Integer roleId);
 
 }

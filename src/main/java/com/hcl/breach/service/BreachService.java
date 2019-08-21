@@ -6,9 +6,7 @@ import com.hcl.breach.dto.BreachRequestDto;
 import com.hcl.breach.dto.BreachResponseDto;
 @Service
 public interface BreachService {
-	
 	BreachResponseDto createBreach(BreachRequestDto breachRequestDto);
-
 	public List<BusinessCategoryResponseDto> getAllCategories();
 
 }
