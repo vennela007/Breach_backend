@@ -16,11 +16,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class User implements Serializable{
+public class Login implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer userId;
+	private Integer loginId;
 	private String userName;
 	private String password;
+	private Integer roleId;
 }

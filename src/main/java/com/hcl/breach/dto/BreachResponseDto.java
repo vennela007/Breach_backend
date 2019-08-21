@@ -11,15 +11,13 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class BreachRequestDto implements Serializable {
+public class BreachResponseDto implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String franchise;
-	private String businessArea;
-	private String businessCategory;
-	private String description;
-	private Integer id;
+	private String message;
+	private Integer userId;
+
 }

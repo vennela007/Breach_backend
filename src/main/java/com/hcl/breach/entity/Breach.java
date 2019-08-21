@@ -33,6 +33,6 @@ public class Breach implements Serializable {
 	private String riskType;
 	@CreationTimestamp
 	private LocalDate creationDate;
-	private Integer userId;
+	private Integer roleId;
 	private Integer adminId;
 }
