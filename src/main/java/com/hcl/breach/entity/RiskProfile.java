@@ -1,15 +1,12 @@
 package com.hcl.breach.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,22 +16,17 @@ import lombok.Setter;
 @Entity
 @Table
 @NoArgsConstructor
-@AllArgsConstructor
 @Setter
 @Getter
-public class Breach implements Serializable {
+@AllArgsConstructor
+public class RiskProfile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer breachId;
+	private Integer riskProfileId;
 	private String franchise;
 	private String businessArea;
-	private String businessCategory;
-	private String description;
-	private String status;
-	private String riskType;
-	@CreationTimestamp
-	private LocalDate creationDate;
-	private Integer roleId;
+	private String breachCategory;
+	private String risk;
 
 }

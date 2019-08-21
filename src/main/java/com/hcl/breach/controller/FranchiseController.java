@@ -23,24 +23,24 @@ import com.hcl.breach.service.FranchiseService;
 @CrossOrigin(allowedHeaders = { "*", "/" }, origins = { "*", "/" })
 public class FranchiseController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(FranchiseController.class);
-	
+
 	@Autowired
 	FranchiseService franchiseService;
 	@Autowired
 	BusinessAreaService businessAreaService;
-		
+	
 	@GetMapping("/franchises")
 	public ResponseEntity<List<FranchiseResponseDto>> getAllFranchise() {
 		LOGGER.info("inside franchise");
 		List<FranchiseResponseDto> response = franchiseService.getAllFranchise();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/businessAreas/{franchiseId}")
 	public ResponseEntity<List<BusinessAreaDto>> getAllBusinessAreas(@PathVariable Integer franchiseId) {
 		LOGGER.info("inside business Area");
-		List<BusinessAreaDto> response = franchiseService.getAllBusinessAreas(franchiseId);
+		List<BusinessAreaDto> response = businessAreaService.getAllBusinessAreas(franchiseId);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	
+
 }
