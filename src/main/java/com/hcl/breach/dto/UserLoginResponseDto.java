@@ -13,6 +13,7 @@ public class UserLoginResponseDto {
 
 	private String message;
 	private Integer roleId;
+	private String roleType;
 	
 	
 }

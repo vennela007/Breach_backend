@@ -57,6 +57,7 @@ public class BreachServiceImpl implements BreachService {
 			breach.setRiskType(riskProfile.get().getRisk());
 
 		breachRepository.save(breach);
+		
 
 		return new BreachResponseDto("Breach created successfully", breachRequestDto.getId());
 	}
