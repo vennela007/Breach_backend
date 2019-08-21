@@ -47,9 +47,6 @@ public class ValidateBreachServiceImpl implements ValidateBreachService{
 		if(!breach.get().getBreachId().equals(validateBreachRequestDto.getBreachId()))
 			throw new BreachNotFoundException("No breach request found");
 		
-//		Breach brch = new Breach();
-//		System.out.println(breach.get().getStatus());
-//		brch.setStatus(validateBreachRequestDto.getStatus());
 		breach.get().setStatus(validateBreachRequestDto.getStatus());
 		breachRepository.save(breach.get());
 		

@@ -43,7 +43,7 @@ public class ValidateBreachController {
 	 */
 	@PutMapping("/action")
 	public ResponseEntity<ValidateBreachResponseDto> vaildateBreach(@RequestBody ValidateBreachRequestDto validateBreachRequestDto) {
-		LOGGER.info(" credit Otp  controller");
+		LOGGER.info(" validate branch controller");
 		ValidateBreachResponseDto response = validateBreachService.validateBreach(validateBreachRequestDto);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
