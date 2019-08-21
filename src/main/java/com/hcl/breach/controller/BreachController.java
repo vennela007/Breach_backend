@@ -29,20 +29,14 @@ import com.hcl.breach.service.BreachService;
 @CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RequestMapping("/api")
 public class BreachController {
-
 	private static  Logger logger= LoggerFactory.getLogger("BreachController.class");
-	
 	@Autowired BreachService breachService;
 	@GetMapping("/getAllCategories")
 	public ResponseEntity<List<BusinessCategoryResponseDto>> getBreachCategories() {
-		
 		logger.info("inside the getBusinessCategories method");
-		
 		List<BusinessCategoryResponseDto> response = breachService.getAllCategories();
-		
 		return  new ResponseEntity<>(response , HttpStatus.OK);
 	} 
-
 	@PostMapping("/createBreach")
 	public ResponseEntity<BreachResponseDto> createBreach(@RequestBody BreachRequestDto breachRequestDto) {
 		return new ResponseEntity<>(breachService.createBreach(breachRequestDto), HttpStatus.CREATED);
