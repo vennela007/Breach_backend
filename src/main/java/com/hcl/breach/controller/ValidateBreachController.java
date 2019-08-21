@@ -46,6 +46,4 @@ public class ValidateBreachController {
 		ValidateBreachResponseDto response = validateBreachService.validateBreach(validateBreachRequestDto);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
-	
-	
 }
