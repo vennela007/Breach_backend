@@ -26,7 +26,7 @@ public class BusinessArea implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id 
 	@GeneratedValue(strategy =GenerationType.AUTO)
-	private Long areaId;
+	private Integer areaId;
 	private String areaName;
 	@JsonBackReference
 	@ManyToOne
