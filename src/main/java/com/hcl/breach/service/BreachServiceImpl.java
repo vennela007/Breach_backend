@@ -3,27 +3,23 @@ package com.hcl.breach.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.hcl.breach.dto.BusinessCategoryResponseDto;
-import com.hcl.breach.entity.BusinessCategory;
-import com.hcl.breach.repository.BusinessCategoryRepository;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.breach.dto.BreachRequestDto;
 import com.hcl.breach.dto.BreachResponseDto;
+import com.hcl.breach.dto.BusinessCategoryResponseDto;
 import com.hcl.breach.entity.Breach;
+import com.hcl.breach.entity.BusinessCategory;
 import com.hcl.breach.entity.RiskProfile;
 import com.hcl.breach.entity.RiskType;
 import com.hcl.breach.repository.BreachRepository;
+import com.hcl.breach.repository.BusinessCategoryRepository;
 import com.hcl.breach.repository.RiskProfileRepository;
 
 /**
@@ -56,7 +52,7 @@ public class BreachServiceImpl implements BreachService {
 		breach.setBusinessArea(breachRequestDto.getBusinessArea());
 		breach.setBusinessCategory(breachRequestDto.getBusinessCategory());
 		breach.setDescription(breachRequestDto.getDescription());
-		breach.setFranchise(breachRequestDto.getFranchise());
+		breach.setFranchise(breachRequestDto.getFranchiseName());
 		breach.setStatus("P");
 		breach.setRoleId(breachRequestDto.getId());
 

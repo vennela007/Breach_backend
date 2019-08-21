@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.breach.dto.BreachIncidentResponseDto;
 import com.hcl.breach.entity.Breach;
-import com.hcl.breach.exception.BreachIncidentException;
 import com.hcl.breach.exception.BreachRiskTypeException;
 import com.hcl.breach.repository.BreachRepository;
 

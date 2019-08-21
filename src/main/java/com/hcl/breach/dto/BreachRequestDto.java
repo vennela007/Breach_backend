@@ -17,7 +17,7 @@ public class BreachRequestDto implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String franchise;
+	private String franchiseName;
 	private String businessArea;
 	private String businessCategory;
 	private String description;
