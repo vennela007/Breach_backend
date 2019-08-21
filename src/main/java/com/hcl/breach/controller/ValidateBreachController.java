@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +42,7 @@ public class ValidateBreachController {
 	 */
 	@PutMapping("/action")
 	public ResponseEntity<ValidateBreachResponseDto> vaildateBreach(@RequestBody ValidateBreachRequestDto validateBreachRequestDto) {
-		LOGGER.info(" validate branch controller");
+		LOGGER.info(" validate breach controller");
 		ValidateBreachResponseDto response = validateBreachService.validateBreach(validateBreachRequestDto);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}

@@ -22,7 +22,7 @@ import com.hcl.breach.repository.BreachRepository;
 import com.hcl.breach.service.ValidateBreachServiceImpl;
 
 /**
- * @author user1
+ * @author Gurpreet Singh
  *
  */
 @RunWith(MockitoJUnitRunner.class)

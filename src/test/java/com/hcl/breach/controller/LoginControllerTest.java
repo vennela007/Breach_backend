@@ -25,10 +25,8 @@ this class is for testing Login Service class methods
  **/
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
-//@WebMvcTest(value = LoginControllerTest.class)
 public class LoginControllerTest {
 
-//	@Autowired
 	MockMvc mockMvc;
 
 	@InjectMocks

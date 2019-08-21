@@ -9,7 +9,7 @@ import com.hcl.breach.dto.ValidateBreachRequestDto;
 import com.hcl.breach.dto.ValidateBreachResponseDto;
 
 /**
- * @author user1
+ * @author Gurpreet Singh
  *
  */
 @Service

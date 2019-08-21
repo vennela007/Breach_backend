@@ -22,7 +22,7 @@ import com.hcl.breach.exception.BreachNotFoundException;
 import com.hcl.breach.repository.BreachRepository;
 
 /**
- * @author user1
+ * @author Gurpreet Singh
  *
  */
 @RunWith(MockitoJUnitRunner.class)
