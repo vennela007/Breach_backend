@@ -40,35 +40,30 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 	public List<BreachIncidentResponseDto> getAllBreachIncidents(String role) {
 		LOGGER.info("breach incident service");
 		List<BreachIncidentResponseDto> breachList = new ArrayList<>();
-		List<Breach> allBreaches = breachRepository.findAll();
 
-		if (allBreaches.isEmpty()) {
-			throw new BreachIncidentException();
+		if (role.equals("A")) {
+			List<Breach> closedBreaches = breachRepository.findByRoleIdAndStatus(2, "C");
+			closedBreaches.stream().forEach(p -> {
+				BreachIncidentResponseDto response = new BreachIncidentResponseDto();
+				BeanUtils.copyProperties(p, response);
+				breachList.add(response);
+			});
+
 		} else {
-			if (role.equals("A")) {
-				List<Breach> closedBreaches = breachRepository.findByRoleIdAndStatus(2, "C");
-				closedBreaches.stream().forEach(p -> {
+			List<Breach> allBreaches = breachRepository.findByStatus("P");
+			allBreaches.stream().forEach(b -> {
+				String riskType = b.getRiskType();
+
+				if (role.equalsIgnoreCase(riskType)) {
 					BreachIncidentResponseDto response = new BreachIncidentResponseDto();
-					BeanUtils.copyProperties(p, response);
+					BeanUtils.copyProperties(b, response);
 					breachList.add(response);
-				});
+				}
 
-			} else {
-
-				allBreaches.stream().forEach(b -> {
-					String riskType = b.getRiskType();
-
-					if (role.equalsIgnoreCase(riskType)) {
-						BreachIncidentResponseDto response = new BreachIncidentResponseDto();
-						BeanUtils.copyProperties(b, response);
-						breachList.add(response);
-					}
-
-					else {
-						throw new BreachRiskTypeException(role);
-					}
-				});
-			}
+				else {
+					throw new BreachRiskTypeException(role);
+				}
+			});
 		}
 
 		return breachList;
