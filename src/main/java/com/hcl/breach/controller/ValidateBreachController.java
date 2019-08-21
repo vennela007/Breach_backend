@@ -18,13 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hcl.breach.dto.ValidateBreachRequestDto;
 import com.hcl.breach.dto.ValidateBreachResponseDto;
 import com.hcl.breach.service.ValidateBreachService;
-import com.hcl.fundtransfer.dto.ConfirmOtpRequestDto;
-import com.hcl.fundtransfer.dto.ConfirmOtpResponseDto;
-
 
 /**
  * @author Gurpreet Singh
- * This class is used to validate breach like closed/reject/pending
+ * This is the controller class for validating breach like closed/reject/pending
  *
  */
 @RestController
@@ -36,11 +33,20 @@ public class ValidateBreachController {
 	@Autowired
 	ValidateBreachService validateBreachService;
 	
-	@PutMapping("/validatebreach")
+	/**
+	 * This method is use to close/reject/reopen the breach requests
+	 * 
+	 * @param ValidateBreachRequestDto as input which contains
+	 * 										breachId, status
+	 * @return ValidateBreachResponseDto as output which includes message
+	 *         								 with status code as 200
+	 */
+	@PutMapping("/action")
 	public ResponseEntity<ValidateBreachResponseDto> vaildateBreach(@RequestBody ValidateBreachRequestDto validateBreachRequestDto) {
 		LOGGER.info(" credit Otp  controller");
 		ValidateBreachResponseDto response = validateBreachService.validateBreach(validateBreachRequestDto);
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+	
 	
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hcl.breach.entity.Breach;
 
+
 @Repository
 public interface BreachRepository extends JpaRepository<Breach, Integer>{
 
