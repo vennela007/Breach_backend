@@ -9,6 +9,11 @@ package com.hcl.breach.exception;
  */
 public class BreachNotFoundException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public BreachNotFoundException(String message) {
 		super(message);
 	}
