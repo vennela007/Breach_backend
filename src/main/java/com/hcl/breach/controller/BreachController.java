@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RequestMapping("/api")
 public class BreachController {
-
+	
 }

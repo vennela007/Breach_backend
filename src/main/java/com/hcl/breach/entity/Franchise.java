@@ -1,15 +1,16 @@
 package com.hcl.breach.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.CreationTimestamp;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,19 +21,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-public class Breach implements Serializable {
+public class Franchise implements Serializable {
 	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer breachId;
-	private String franchise;
-	private String businessArea;
-	private String businessCategory;
-	private String description;
-	private String status;
-	private String riskType;
-	@CreationTimestamp
-	private LocalDate creationDate;
-	private Integer roleId;
-
+	private Integer franchiseId;
+	private String franchiseName;
+	@JsonManagedReference
+	@OneToMany(mappedBy = "franchise")
+	private List<BusinessArea> businessArea;
 }

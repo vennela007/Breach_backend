@@ -19,4 +19,16 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), e.getMessage()),
 				HttpStatus.INTERNAL_SERVER_ERROR);
 	}
+	
+	@ExceptionHandler(BreachIncidentException.class)
+	public ResponseEntity<ErrorResponse> breachIncidentException(Exception e) {
+		return new ResponseEntity<>(new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage()),
+				HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(BreachRiskTypeException.class)
+	public ResponseEntity<ErrorResponse> breachRiskTypeException(Exception e) {
+		return new ResponseEntity<>(new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage()),
+				HttpStatus.NOT_FOUND);
+	}
 }
