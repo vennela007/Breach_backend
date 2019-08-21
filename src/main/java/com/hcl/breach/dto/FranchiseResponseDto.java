@@ -1,6 +1,9 @@
 package com.hcl.breach.dto;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.hcl.breach.entity.BusinessArea;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,13 +14,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class BreachResponseDto implements Serializable {
+public class FranchiseResponseDto implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private String message;
-	private Integer roleId;
+	private Integer franchiseId;
+	private String franchiseName;
+	private List<BusinessArea> businessArea;
 
 }

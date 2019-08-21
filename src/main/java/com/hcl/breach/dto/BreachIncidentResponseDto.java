@@ -7,17 +7,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@NoArgsConstructor
 @Setter
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
-public class BreachResponseDto implements Serializable {
-
-	/**
-	 * 
-	 */
+public class BreachIncidentResponseDto implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String message;
+	private String franchise;
+	private String businessArea;
+	private String businessCategory;
+	private String description;
+	private String status;
+	private String riskType;
 	private Integer roleId;
-
 }
