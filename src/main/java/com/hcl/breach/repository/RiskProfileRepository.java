@@ -8,8 +8,8 @@ import com.hcl.breach.entity.RiskProfile;
 
 public interface RiskProfileRepository extends JpaRepository<RiskProfile, Integer> {
 
-	public Optional<RiskProfile> findByFranchiseAndBusinessAreaAndBreachCategory(String breachCategory, String businessArea,
-			String franchise);
+	public Optional<RiskProfile> findByFranchiseAndBusinessAreaAndBreachCategory(String franchise, String businessArea,
+			String breachCategory);
 
 
 }

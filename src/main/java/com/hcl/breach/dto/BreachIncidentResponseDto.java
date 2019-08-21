@@ -20,4 +20,6 @@ public class BreachIncidentResponseDto implements Serializable {
 	private String status;
 	private String riskType;
 	private Integer roleId;
+	private Integer breachId;
+	private String roleName;
 }

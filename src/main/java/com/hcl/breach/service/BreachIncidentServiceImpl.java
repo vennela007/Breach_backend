@@ -2,6 +2,7 @@ package com.hcl.breach.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Service;
 
 import com.hcl.breach.dto.BreachIncidentResponseDto;
 import com.hcl.breach.entity.Breach;
-import com.hcl.breach.exception.BreachRiskTypeException;
+import com.hcl.breach.entity.Login;
 import com.hcl.breach.repository.BreachRepository;
+import com.hcl.breach.repository.UserRepository;
 
 /**
  * 
@@ -25,6 +27,9 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 
 	@Autowired
 	BreachRepository breachRepository;
+	
+	@Autowired
+	UserRepository userRepository;
 
 	/**
 	 * 
@@ -41,9 +46,12 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 		List<BreachIncidentResponseDto> breachList = new ArrayList<>();
 
 		if (role.equals("A")) {
-			List<Breach> closedBreaches = breachRepository.findByRoleIdAndStatus(2, "C");
+			List<Breach> closedBreaches = breachRepository.findByStatus("C");
 			closedBreaches.stream().forEach(p -> {
+				Optional<Login> login=userRepository.findById(p.getRoleId());
+				
 				BreachIncidentResponseDto response = new BreachIncidentResponseDto();
+				response.setRoleName(login.get().getUserName());
 				BeanUtils.copyProperties(p, response);
 				breachList.add(response);
 			});
@@ -51,17 +59,16 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 		} else {
 			List<Breach> allBreaches = breachRepository.findByStatus("P");
 			allBreaches.stream().forEach(b -> {
+				Optional<Login> login=userRepository.findById(b.getRoleId());
 				String riskType = b.getRiskType();
 
 				if (role.equalsIgnoreCase(riskType)) {
 					BreachIncidentResponseDto response = new BreachIncidentResponseDto();
+					response.setRoleName(login.get().getUserName());
 					BeanUtils.copyProperties(b, response);
 					breachList.add(response);
 				}
 
-				else {
-					throw new BreachRiskTypeException(role);
-				}
 			});
 		}
 
