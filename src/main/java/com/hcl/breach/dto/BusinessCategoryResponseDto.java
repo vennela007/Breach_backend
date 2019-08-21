@@ -7,13 +7,10 @@ import lombok.Setter;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class UserLoginResponseDto {
+@NoArgsConstructor
+public class BusinessCategoryResponseDto {
 
-	private String message;
-	private Integer roleId;
-	private String roleType;
-	
-	
+	private Integer categoryId;
+	private String categoryName;
 }

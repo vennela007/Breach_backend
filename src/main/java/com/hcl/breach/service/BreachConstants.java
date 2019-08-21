@@ -6,10 +6,6 @@ public class BreachConstants {
 	{
 		
 	}
-//	public static final String PRIVATE_BANKING="Private Banking";
-//	public static final String CUSTOMER_EXPERIENCE="Customer Experience";
-//	public static final String PRIVATE_BANKING="Private Banking";
-//	public static final String PRIVATE_BANKING="Private Banking";
 	
 
 }
