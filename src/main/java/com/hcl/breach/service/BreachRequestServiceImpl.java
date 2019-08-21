@@ -17,7 +17,7 @@ import com.hcl.breach.entity.Breach;
 import com.hcl.breach.repository.BreachRepository;
 
 /**
- * @author user1
+ * @author Gurpreet Singh
  *
  */
 @Service
@@ -27,7 +27,12 @@ public class BreachRequestServiceImpl implements BreachRequestService {
 	@Autowired
 	BreachRepository breachRepository;
 	/**
-	 * This method is use to provide
+	 * This method is use to provide list of all breaches by role Id
+	 * @param Integer roleId is the input parameter
+	 * @return responseList it will return the list of breaches which contains
+	 * breachId, franchise, businessArea, businessCategory, description, status, 
+	 * riskType, creationDate
+	 * 
 	 */
 	@Override
 	public List<BreachListResponseDto> getAllBreaches(Integer roleId) {

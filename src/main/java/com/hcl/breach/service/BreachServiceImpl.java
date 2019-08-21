@@ -1,18 +1,25 @@
 package com.hcl.breach.service;
 
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.breach.dto.BreachRequestDto;
 import com.hcl.breach.dto.BreachResponseDto;
+import com.hcl.breach.dto.BusinessCategoryResponseDto;
 import com.hcl.breach.entity.Breach;
+import com.hcl.breach.entity.BusinessCategory;
 import com.hcl.breach.entity.RiskProfile;
 import com.hcl.breach.entity.RiskType;
 import com.hcl.breach.repository.BreachRepository;
+import com.hcl.breach.repository.BusinessCategoryRepository;
 import com.hcl.breach.repository.RiskProfileRepository;
 
 /**
@@ -23,7 +30,7 @@ import com.hcl.breach.repository.RiskProfileRepository;
 @Service
 public class BreachServiceImpl implements BreachService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(BreachServiceImpl.class);
-
+	@Autowired BusinessCategoryRepository businessCategoryRepository;
 	@Autowired
 	BreachRepository breachRepository;
 
@@ -57,8 +64,23 @@ public class BreachServiceImpl implements BreachService {
 			breach.setRiskType(riskProfile.get().getRisk());
 
 		breachRepository.save(breach);
+		
 
 		return new BreachResponseDto("Breach created successfully", breachRequestDto.getId());
-	}
 
+	}
+	@Override
+	public List<BusinessCategoryResponseDto> getAllCategories() {
+		
+		List<BusinessCategoryResponseDto> responseList = new ArrayList<>();
+		List<BusinessCategory> categoryList = businessCategoryRepository.findAll();
+		
+		categoryList.stream().forEach(c ->{
+			BusinessCategoryResponseDto response = new BusinessCategoryResponseDto();
+			BeanUtils.copyProperties(c,response);
+			responseList.add(response);
+		});
+		return responseList;
+
+}
 }
