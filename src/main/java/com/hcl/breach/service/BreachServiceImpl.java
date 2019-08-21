@@ -51,7 +51,7 @@ public class BreachServiceImpl implements BreachService {
 		breach.setBusinessArea(breachRequestDto.getBusinessArea());
 		breach.setBusinessCategory(breachRequestDto.getBusinessCategory());
 		breach.setDescription(breachRequestDto.getDescription());
-		breach.setFranchise(breachRequestDto.getFranchise());
+		breach.setFranchise(breachRequestDto.getFranchiseName());
 		breach.setStatus("P");
 		breach.setRoleId(breachRequestDto.getId());
 
