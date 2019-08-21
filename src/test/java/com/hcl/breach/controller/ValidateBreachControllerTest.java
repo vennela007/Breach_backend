@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -23,7 +22,7 @@ import com.hcl.breach.repository.BreachRepository;
 import com.hcl.breach.service.ValidateBreachServiceImpl;
 
 /**
- * @author user1
+ * @author Gurpreet Singh
  *
  */
 @RunWith(MockitoJUnitRunner.class)
@@ -66,7 +65,6 @@ public class ValidateBreachControllerTest {
 	@Test
 	public void testVaildateBreach() throws Exception
 	{
-//		Mockito.when(validateBreachServiceImpl.validateBreach(getValidateBreachRequestDto())).thenReturn(getValidateBreachResponseDto());
 		mockMvc.perform(MockMvcRequestBuilders.put("/api/action").contentType(MediaType.APPLICATION_JSON)
 				.content(asJsonString(getValidateBreachResponseDto()))).andExpect(MockMvcResultMatchers.status().isOk());
 	}

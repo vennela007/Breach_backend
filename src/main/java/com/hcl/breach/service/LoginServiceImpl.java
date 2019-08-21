@@ -27,7 +27,16 @@ public class LoginServiceImpl implements LoginService {
 	RoleRepository roleRepository;
 
 	private static Logger logger = LoggerFactory.getLogger(LoginServiceImpl.class);
-
+	
+	/**
+	 * This method is intended to login the user
+	 * by taking user name and password for login
+	 * @param UserLoginRequestDto is the input request which 
+	 * includes user name and password 
+	 * @return it returns "login successful" message with roleId 
+	 * @exception it throws "User not found" exception 
+	 * if the credentials are wrong
+	 */
 	@Override
 	public UserLoginResponseDto loginUser(UserLoginRequestDto userLoginRequestDto) {
 		logger.info("inside the login method..");
