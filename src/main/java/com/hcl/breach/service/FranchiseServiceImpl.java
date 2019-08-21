@@ -12,12 +12,23 @@ import com.hcl.breach.entity.Franchise;
 import com.hcl.breach.exception.FranchiseException;
 import com.hcl.breach.repository.FranchiseRepository;
 
+/**
+ * 
+ * @author DeepikaSivarajan
+ *
+ */
 @Service
 public class FranchiseServiceImpl implements FranchiseService {
 
 	@Autowired
 	FranchiseRepository franchiseRepository;
 	
+	/**
+	 * 
+	 * This method is intended to list of franchiseDetails
+	 * @param no input request
+	 * @return it returns FranchiseResponseDto list
+	 */
 	
 	@Override
 	public List<FranchiseResponseDto> getAllFranchise() {

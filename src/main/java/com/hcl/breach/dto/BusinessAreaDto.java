@@ -16,7 +16,7 @@ import lombok.Setter;
 public class BusinessAreaDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private Long areaId;
+	private Integer areaId;
 	private String areaName;
 	private Franchise franchise;
 }

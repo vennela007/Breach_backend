@@ -30,9 +30,8 @@ public class BreachIncidentServiceImpl implements BreachIncidentService {
 	/**
 	 * 
 	 * This method is intended to list breaches based on role
-	 * @param role is the input request which 
-	 * includes franchise, businessArea, businessCategory, description, id
-	 * @return it returns  BreachResponseDto object with message and login id 
+	 * @param role is the input request 
+	 * @return it returns  BreachIncidentResponseDto list with roleId  
 	 */
 	
 	@Override
